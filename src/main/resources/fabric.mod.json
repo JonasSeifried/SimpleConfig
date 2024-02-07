@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "simpleconfig",
+	"version": "${version}",
+	"name": "SimpleConfig",
+	"description": "This is a simple Config Library",
+	"authors": [
+		"Jonas Seifried"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/simpleconfig/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "com.jonasseifried.simpleconfig.SimpleConfigMod",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"simpleconfig.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.6",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*",
+		"fabric-language-kotlin": ">=1.9.22"
+	}
+}
