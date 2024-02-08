@@ -8,8 +8,9 @@
 		"Jonas Seifried"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/JonasSeifried/SimpleConfig",
+		"sources": "https://github.com/JonasSeifried/SimpleConfig",
+		"issues": "https://github.com/JonasSeifried/SimpleConfig/issues"
 	},
 	"license": "MIT",
 	"icon": "assets/simpleconfig/icon.png",
@@ -28,10 +29,5 @@
 		"java": ">=17",
 		"fabric-api": "*",
 		"fabric-language-kotlin": ">=1.9.22"
-	},
-	"custom": {
-		"modmenu": {
-				"bagdes": [ " library " ]
-		}
 	}
 }
