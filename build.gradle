@@ -3,6 +3,7 @@ plugins {
 	id 'maven-publish'
   	id "org.jetbrains.kotlin.jvm" version "1.9.22"
 	id 'org.jetbrains.kotlin.plugin.serialization' version "1.9.22"
+	id "com.modrinth.minotaur" version "2.+"
 }
 
 version = project.mod_version
@@ -27,6 +28,17 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
+}
+
+modrinth {
+	token = System.getenv("MODRINTH_TOKEN")
+	projectId = project.modrinth_project_id
+	uploadFile = remapJar
+	syncBodyFrom = rootProject.file("README.md").text
+	dependencies {
+		required.project "fabric-api"
+		required.project "fabric-language-kotlin"
+	}
 }
 
 processResources {
