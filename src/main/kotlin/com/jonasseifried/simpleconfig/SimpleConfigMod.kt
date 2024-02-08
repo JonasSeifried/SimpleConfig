@@ -1,42 +1,37 @@
 package com.jonasseifried.simpleconfig
 
-import com.jonasseifried.simpleconfig.MyConfig.load
-import com.jonasseifried.simpleconfig.MyConfig.patch
+import com.jonasseifried.simpleconfig.SimpleConfigMod.MOD_ID
 import kotlinx.serialization.Serializable
 import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
 object SimpleConfigMod : ModInitializer {
-    private val logger = LoggerFactory.getLogger("simpleconfig")
+    internal const val MOD_ID = "simpleconfig"
+    private val logger = LoggerFactory.getLogger(MOD_ID)
 
-	override fun onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+    override fun onInitialize() {
+        // This code runs as soon as Minecraft is in a mod-load-ready state.
+        // However, some things (like resources) may still be uninitialized.
+        // Proceed with mild caution.
 
-		MyConfig.load()
-		MyConfig.patch {
-			this.config.run {
-				this.test = 5.0
-				this.hello = "minecraft"
-			}
-		}
-		logger.info("Config Initialized")
-	}
+        MyConfig.patch(loadBefore = true) {
+            test = 1.99999
+            hello = "wowowow"
+        }
+        MyConfig.patch {
+            test = 2.5
+        }
+        registerCommands()
+        logger.info("Config Initialized")
+    }
 }
 
+object MyConfig : SimpleConfig<MyConfig.MyData>(defaultValue = MyData()) {
+    override var fileName = MOD_ID
 
-@Serializable
-object MyConfig: SimpleConfigData() {
-	override var fileName = "simpleconfig.json"
-
-	@ConfigData
-	var config: MyData = MyData()
-
-
-	@Serializable
-	class MyData{
-		var test = 2.0
-		var hello = "world"
-	}
+    @Serializable
+    class MyData {
+        var test = 2.0
+        var hello = "world"
+    }
 }

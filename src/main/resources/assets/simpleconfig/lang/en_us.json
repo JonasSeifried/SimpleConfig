@@ -1,0 +1,7 @@
+{
+  "item.jonasutilsmod.teleporter_staff": "Teleporter Staff",
+  "command.simpleconfig.simpleconfig.feedback": "Please specify which config you want to reload or use the 'all' subcommand to reload all of them.",
+  "command.simpleconfig.simpleconfig.all": "all",
+  "command.simpleconfig.simpleconfig.all.feedback": "Reloaded all SimpleConfig's",
+  "command.simpleconfig.simpleconfig.any_config.feedback": "SimpleConfig:%s reloaded"
+}
