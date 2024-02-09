@@ -79,7 +79,7 @@ repositories {
 
 dependencies {
   [...]
-  modImplementation 'com.github.JonasSeifried:SimpleConfig:c12ca16a20'
+  modImplementation 'com.github.JonasSeifried:SimpleConfig:1623553e8f'
 }
 ```
 
