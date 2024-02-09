@@ -29,6 +29,10 @@ object TutorialMod : ModInitializer {
 ```
 When you write data using the `patch` method, it will automatically be written to the file.
 
+### Command
+
+You can also reload your config with `/simpleconfig [fileName]` command or reload all Simple Config's with the `/simpleconfig all` command.
+
 ## Configuration
 
 To create a config, you need to create an `object` that extends `SimpleConfig<T>`. `T` can be any class as long as it has the `@Serializable` annotation. You must override `fileName`!
@@ -36,11 +40,7 @@ To create a config, you need to create an `object` that extends `SimpleConfig<T>
 Here's an example:
 ``` kotlin
 object MyConfig: SimpleConfig<SomeDataClass>(defaultValue = SomeDataClass()) {
-	override var fileName = "my_config"
-	// Optional: `.json` is the default file extension
-	override val fileEnding = ".json"
-	// Optional: `FabricLoader.getInstance().configDir` is the default path
-	override val path: Path = FabricLoader.getInstance().configDir
+	override var fileName = "tutorialmod_config"
 }
 
 @Serializable
@@ -55,6 +55,13 @@ class SomeNestedClass {
 	var someData = LocalDate.parse("2024-01-01")
 }
 ```
+Optional values you can override:
+| Options                  | Description                                    | default                                              |
+|--------------------------|------------------------------------------------|------------------------------------------------------|
+| fileEnding               | The file extension that should be used         | `".json"`                                            |
+| path                     | The path the config will be written to         | `FabricLoader.getInstance().configDir`               |
+| createReloadCommand      | Should Simple Config register a reload command | `true`                                               |
+| json                     | The Json settings used for the serialization   | `Json { prettyPrint = true; encodeDefaults = true }` |
 
 ## Gradle Setup  
 To set up Simple Config via Gradle, add the following to your `build.gradle` file:
